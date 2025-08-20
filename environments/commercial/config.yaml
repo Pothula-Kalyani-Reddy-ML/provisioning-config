@@ -1,0 +1,22 @@
+tenantDefaults:
+  subscriptionId: "12345678-1234-1234-1234-123456789012"
+  tenantId: "87654321-4321-4321-4321-210987654321"
+  region: "eastus2"
+  cloudEnvironment: "commercial"
+  resourceGroupNamingPattern: "rg-{tenantName}-commercial"
+
+  # Credentials are pulled securely from this Key Vault
+  credentialsKeyVaultName: "platform-credentials-kv"
+  credentialReference: "tenant-commercial-customer1"
+
+  azureEndpoints:
+    resourceManager: "https://management.azure.com/"
+    activeDirectory: "https://login.microsoftonline.com/"
+    storage: "core.windows.net"
+    keyVault: "vault.azure.net"
+
+  taggingPolicy:
+    managed-by: "versa-platform"
+    created-by: "tenant-provisioning-service"
+    cost-center: "platform-infrastructure"
+    cloud-environment: "commercial"

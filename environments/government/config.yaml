@@ -1,0 +1,21 @@
+tenantDefaults:
+  subscriptionId: "87654321-4321-4321-4321-210987654321"
+  tenantId: "12345678-1234-1234-1234-123456789012"
+  region: "usgovvirginia"
+  cloudEnvironment: "government"
+  resourceGroupNamingPattern: "rg-{tenantName}-government"
+  credentialsKeyVaultName: "platform-gov-credentials-kv"
+  credentialReference: "tenant-government-customer1"
+
+  azureEndpoints:
+    resourceManager: "https://management.usgovcloudapi.net/"
+    activeDirectory: "https://login.microsoftonline.us/"
+    storage: "core.usgovcloudapi.net"
+    keyVault: "vault.usgovcloudapi.net"
+
+  taggingPolicy:
+    managed-by: "versa-platform"
+    created-by: "tenant-provisioning-service"
+    cost-center: "platform-infrastructure"
+    cloud-environment: "government"
+    compliance: "fedramp-high"

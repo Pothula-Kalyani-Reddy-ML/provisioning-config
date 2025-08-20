@@ -1,0 +1,56 @@
+resourceTemplates:
+  - template_id: "rt-base-infrastructure-base-infrastructure-v1.0.0"
+    name: "base-infrastructure"
+    version: "1.0.0"
+    executionOrder: 1
+    required: true
+    dependsOn: []
+    parameters:
+      vnetAddressSpace: "10.0.0.0/16"
+      defaultSubnetPrefix: "10.0.1.0/24"
+      servicesSubnetPrefix: "10.0.2.0/24"
+      enableDdosProtection: false
+      allowedInboundPorts: ["443", "80"]
+
+  - template_id: "rt-storage-adls-storage-v1.0.0"
+    name: "adls-storage"
+    version: "1.0.0"
+    executionOrder: 2
+    required: true
+    dependsOn:
+      - "rt-base-infrastructure-base-infrastructure-v1.0.0"
+    parameters:
+      storageAccountSku: "Standard_LRS"
+      accessTier: "Hot"
+      enableHierarchicalNamespace: true
+      minimumTlsVersion: "TLS1_2"
+      allowBlobPublicAccess: false
+      defaultNetworkAccessRule: "Deny"
+
+  - template_id: "rt-security-key-vault-v1.0.0"
+    name: "key-vault"
+    version: "1.0.0"
+    executionOrder: 3
+    required: false
+    dependsOn:
+      - "rt-base-infrastructure-base-infrastructure-v1.0.0"
+    parameters:
+      keyVaultSku: "standard"
+      enableSoftDelete: true
+      softDeleteRetentionDays: 90
+      enablePurgeProtection: true
+      networkAccessRule: "Deny"
+
+networking:
+  vnetAddressSpaceGenerator:
+    baseNetwork: "10.0.0.0/8"
+    incrementBy: "10.{increment}.0.0/16"
+  dnsSettings:
+    customDnsServers: []
+    enableAzureDns: true
+
+security:
+  encryptionAtRest: true
+  encryptionInTransit: true
+  enableAzureDefender: true
+  logRetentionDays: 90
