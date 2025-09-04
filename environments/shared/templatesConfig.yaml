@@ -1,4 +1,27 @@
 resourceTemplates:
+  - template_id: "rt-complete-infrastructure-complete-infrastructure-v1.0.0"
+    name: "complete-infrastructure"
+    version: "1.0.0"
+    executionOrder: 1
+    required: true
+    dependsOn: []
+    parameters:
+      vnetAddressSpace: "10.0.0.0/16"
+      defaultSubnetPrefix: "10.0.1.0/24"
+      servicesSubnetPrefix: "10.0.2.0/24"
+      allowedInboundPorts: ["443", "80"]
+      domainName: "example.com"
+      contactEmail: "admin@example.com"
+      contactFirstName: "John"
+      contactLastName: "Doe"
+      contactPhone: "+1.5551234567"
+      contactAddress1: "123 Main Street"
+      contactCity: "Seattle"
+      contactState: "WA"
+      contactPostalCode: "98101"
+      contactCountry: "US"
+      enablePrivacy: true
+      enableAutoRenew: true
   - template_id: "rt-base-infrastructure-base-infrastructure-v1.0.0"
     name: "base-infrastructure"
     version: "1.0.0"
